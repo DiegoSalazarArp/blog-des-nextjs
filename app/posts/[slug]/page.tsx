@@ -9,68 +9,10 @@ import { myPortableImageComponent } from "@/sanity/utils/function";
 import { Badge, badgeVariants } from "@/components/ui/badge";
 import Link from "next/link";
 import BadgeComponent from "@/components/blog/BadgeComponent";
+import { Separator } from "@radix-ui/react-separator";
+import { PostSanityDocument } from "@/app/types/global";
 
-// Interfaz para la imagen
-interface Image {
-  _type: string;
-  asset: {
-    _ref: string;
-    _type: string;
-  };
-  crop?: {
-    _type: string;
-    top: number;
-    bottom: number;
-    left: number;
-    right: number;
-  };
-  hotspot?: {
-    _type: string;
-    x: number;
-    y: number;
-    height: number;
-    width: number;
-  };
-}
 
-// Interfaz para el autor
-interface Author {
-  name: string;
-  image: Image;
-}
-
-// Interfaz para las categorías
-interface Category {
-  title: string;
-}
-
-// Interfaz para el contenido del cuerpo (body)
-interface BodyBlock {
-  _key: string;
-  _type: string;
-  style?: string;
-  markDefs?: any[];
-  children: Array<{
-    _key: string;
-    _type: string;
-    text: string;
-    marks?: string[];
-  }>;
-}
-
-// Interfaz principal que extiende SanityDocument
-export interface Post extends SanityDocument {
-  title: string;
-  slug: {
-    current: string;
-    _type: string;
-  };
-  mainImage: Image;
-  publishedAt: string | null;
-  body: BodyBlock[];
-  author: Author;
-  categories: Category[];
-}
 
 const POST_QUERY = `
   *[_type == "post" && slug.current == $slug][0]{
@@ -98,7 +40,7 @@ export default async function Page({ params }: { params: { slug: string } }) {
       ? imageUrlBuilder({ projectId, dataset }).image(source)
       : null;
 
-  const post = await sanityFetch<Post>({
+  const post = await sanityFetch<PostSanityDocument>({
     query: POST_QUERY,
     params,
   });
@@ -127,7 +69,7 @@ export default async function Page({ params }: { params: { slug: string } }) {
           />
           <div className="mt-8 space-y-4">
             <h1 className="text-4xl font-bold tracking-tight">{post.title}</h1>
-            <div className="flex items-center space-x-4  text-muted-foreground">
+            <div className="flex items-center space-x-2  text-muted-foreground">
               <div className="flex items-center space-x-4">
                 <div>
                   <Avatar>
@@ -141,13 +83,18 @@ export default async function Page({ params }: { params: { slug: string } }) {
                   <p className="text-sm"></p>
                 </div>
               </div>
-              {/* <Separator orientation="vertical" /> */}
+              <Separator orientation="vertical" />
+
               <p className="text-sm">
                 Published on {new Date(post.publishedAt!).toLocaleDateString()}
               </p>
-              {post.categories.map((category, i) => {
-                return <BadgeComponent categoryTitle={category.title} />;
-              })}
+
+            </div>
+            {post.categories.map((category, i) => {
+              return <BadgeComponent key={i} categoryTitle={category.title} />;
+            })}
+            <div>
+
             </div>
           </div>
           <div className="prose prose-rose  mt-8 dark:prose-invert  tracking-normal">
