@@ -1,15 +1,11 @@
-import { client, sanityFetch } from "@/sanity/client";
-import { PortableText, SanityDocument } from "next-sanity";
-import createImageUrlBuilder from "@sanity/image-url";
 import Image from "next/image";
+import { client, sanityFetch } from "@/sanity/client";
+import { PortableText } from "next-sanity";
 import { SanityImageSource } from "@sanity/image-url/lib/types/types";
+import { myPortableImageComponent } from "@/sanity/utils/function";
 import imageUrlBuilder from "@sanity/image-url";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import { myPortableImageComponent } from "@/sanity/utils/function";
-import { Badge, badgeVariants } from "@/components/ui/badge";
-import Link from "next/link";
 import BadgeComponent from "@/components/blog/BadgeComponent";
-import { Separator } from "@radix-ui/react-separator";
 import { PostSanityDocument } from "@/app/types/global";
 
 
@@ -54,6 +50,9 @@ export default async function Page({ params }: { params: { slug: string } }) {
     .height(600)
     .url();
 
+  const avatarNamePrefix = post.author.name.split(" ")[0].charAt(0);
+
+
   console.log(JSON.stringify(post, null, 2));
 
   return (
@@ -74,16 +73,14 @@ export default async function Page({ params }: { params: { slug: string } }) {
                 <div>
                   <Avatar>
                     <AvatarImage src={avatarImageUrl} alt="" />
-                    <AvatarFallback>CN</AvatarFallback>
+                    <AvatarFallback>{avatarNamePrefix}</AvatarFallback>
                   </Avatar>
                 </div>
 
                 <div>
                   <p className="font-medium italic">{post.author.name}</p>
-                  <p className="text-sm"></p>
                 </div>
               </div>
-              <Separator orientation="vertical" />
 
               <p className="text-sm">
                 Published on {new Date(post.publishedAt!).toLocaleDateString()}
