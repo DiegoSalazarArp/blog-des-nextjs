@@ -6,6 +6,10 @@ import { SanityImageSource } from "@sanity/image-url/lib/types/types";
 import imageUrlBuilder from "@sanity/image-url";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { myPortableImageComponent } from "@/sanity/utils/function";
+import { Badge, badgeVariants } from "@/components/ui/badge";
+import Link from "next/link";
+import BadgeComponent from "@/components/blog/BadgeComponent";
+
 // Interfaz para la imagen
 interface Image {
   _type: string;
@@ -133,7 +137,7 @@ export default async function Page({ params }: { params: { slug: string } }) {
                 </div>
 
                 <div>
-                  <p className="font-medium">{post.author.name}</p>
+                  <p className="font-medium italic">{post.author.name}</p>
                   <p className="text-sm"></p>
                 </div>
               </div>
@@ -141,6 +145,9 @@ export default async function Page({ params }: { params: { slug: string } }) {
               <p className="text-sm">
                 Published on {new Date(post.publishedAt!).toLocaleDateString()}
               </p>
+              {post.categories.map((category, i) => {
+                return <BadgeComponent categoryTitle={category.title} />;
+              })}
             </div>
           </div>
           <div className="prose prose-rose  mt-8 dark:prose-invert  tracking-normal">

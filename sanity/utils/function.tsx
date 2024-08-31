@@ -1,6 +1,8 @@
 import Image from "next/image";
 import createImageUrlBuilder from "@sanity/image-url";
 
+import SyntaxHighlighter from "react-syntax-highlighter";
+
 export const imageBuilder = createImageUrlBuilder({
   projectId: "wzdvjy51",
   dataset: "production",
@@ -14,12 +16,20 @@ export const myPortableImageComponent = {
   types: {
     image: ({ value }: any) => (
       <Image
-        className="p-10"
+        className="p-2"
         src={urlForImage(value).url()}
         alt="post"
         width={700}
         height={700}
       />
+    ),
+    code: ({ value }: any) => (
+      <SyntaxHighlighter
+        language={value.language || "text"}
+        showLineNumbers={true}
+      >
+        {value.code}
+      </SyntaxHighlighter>
     ),
     callToAction: ({ value, isInline }: any) =>
       isInline ? (
