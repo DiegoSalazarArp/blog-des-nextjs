@@ -7,6 +7,7 @@ import imageUrlBuilder from "@sanity/image-url";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import BadgeComponent from "@/components/blog/BadgeComponent";
 import { PostSanityDocument } from "@/app/types/global";
+import { Suspense } from "react";
 
 
 
@@ -53,7 +54,7 @@ export default async function Page({ params }: { params: { slug: string } }) {
   const avatarNamePrefix = post.author.name.split(" ")[0].charAt(0);
 
 
-  console.log(JSON.stringify(post, null, 2));
+  // console.log(JSON.stringify(post, null, 2));
 
   return (
     <article className="bg-background">
