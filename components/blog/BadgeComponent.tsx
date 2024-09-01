@@ -29,7 +29,7 @@ export default function BadgeComponent({ categoryTitle }: BadgeProps) {
           ? BadgeVariant.DESTRUCTIVE
           : BadgeVariant.OUTLINE;
   return (
-    <Link href={`tags/${categoryTitle}`} className={badgeVariants({ variant })}>
+    <Link href={`/posts/tags/${categoryTitle}`} className={badgeVariants({ variant })}>
       {categoryTitle}
     </Link>
   );

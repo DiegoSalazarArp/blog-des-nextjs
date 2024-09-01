@@ -1,8 +1,16 @@
 import BackButton from "@/components/blog/BackButtonComponent";
 import BadgeComponent from "@/components/blog/BadgeComponent";
+import PostComponent from "@/components/blog/PostComponent";
 import { client, sanityFetch } from "@/sanity/client";
 import { SanityDocument } from "next-sanity";
 import Link from "next/link";
+
+interface Post extends SanityDocument {
+  title: string;
+  slug: {
+    current: string;
+  };
+}
 
 const TAGS_QUERY = `
    *[ _type == 'category' ]
@@ -29,7 +37,7 @@ export default async function Page({ params }: { params: { tag: string } }) {
     query: TAGS_QUERY,
   });
 
-  const posts = await sanityFetch<SanityDocument>({
+  const posts = await sanityFetch<Post[]>({
     query: POSTS_BY_CATEGORY_QUERY,
     params: { category: params.tag },
   })
@@ -55,21 +63,10 @@ export default async function Page({ params }: { params: { tag: string } }) {
 
         <hr />
         <div className="pt-5">
-          <ul className="grid grid-cols-1 gap-12 lg:grid-cols-2">
-            {posts.map((post: any) => (
-              <li className="bg-white p-4 rounded-lg" key={post._id}>
-                <Link
-                  className="hover:underline"
-                  href={`/posts/${post.slug.current}`}
-                >
-                  <h2 className="text-xl font-semibold">{post?.title}</h2>
-                  <p className="text-gray-500">
-                    {new Date(post?._createdAt).toLocaleDateString()}
-                  </p>
-                </Link>
-              </li>
-            ))}
-          </ul>
+
+          <PostComponent posts={posts} />
+
+
         </div>
 
 
