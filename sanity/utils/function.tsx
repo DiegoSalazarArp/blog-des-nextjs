@@ -4,8 +4,8 @@ import createImageUrlBuilder from "@sanity/image-url";
 import SyntaxHighlighter from "react-syntax-highlighter";
 
 export const imageBuilder = createImageUrlBuilder({
-  projectId: "wzdvjy51",
-  dataset: "production",
+  projectId: process.env.SANITY_PROJECT_ID!,
+  dataset: process.env.SANITY_DATASET!,
 });
 
 export const urlForImage = (source: typeof Image) => {

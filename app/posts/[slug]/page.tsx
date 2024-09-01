@@ -10,7 +10,6 @@ import { PostSanityDocument } from "@/app/types/global";
 import { Suspense } from "react";
 
 
-
 const POST_QUERY = `
   *[_type == "post" && slug.current == $slug][0]{
     _id,
