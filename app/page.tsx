@@ -1,6 +1,6 @@
+import PostComponent from "@/components/blog/PostComponent";
 import { sanityFetch } from "@/sanity/client";
 import { SanityDocument } from "next-sanity";
-import Link from "next/link";
 
 interface Post extends SanityDocument {
   title: string;
@@ -28,21 +28,7 @@ export default async function IndexPage() {
   return (
     <>
       <h1 className="text-4xl font-bold tracking-tighter">Post</h1>
-      <ul className="grid grid-cols-1 gap-12 lg:grid-cols-2">
-        {posts.map((post) => (
-          <li className="bg-white p-4 rounded-lg" key={post._id}>
-            <Link
-              className="hover:underline"
-              href={`/posts/${post.slug.current}`}
-            >
-              <h2 className="text-xl font-semibold">{post?.title}</h2>
-              <p className="text-gray-500">
-                {new Date(post?._createdAt).toLocaleDateString()}
-              </p>
-            </Link>
-          </li>
-        ))}
-      </ul>
+      <PostComponent posts={posts} />
     </>
   );
 }
