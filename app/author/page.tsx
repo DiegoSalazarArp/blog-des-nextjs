@@ -21,10 +21,6 @@ const AUTHORS_QUERY = `
 export default async function AuthorPage() {
   const authors = await sanityFetch<Author[]>({ query: AUTHORS_QUERY });
 
-  console.log(authors)
-
-
-
   return (
     <>
       <h1 className="text-4xl font-bold tracking-tighter">Authors</h1>
