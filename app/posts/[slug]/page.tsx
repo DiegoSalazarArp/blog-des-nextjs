@@ -58,7 +58,7 @@ export default async function Page({ params }: { params: { slug: string } }) {
   return (
     <article className="bg-background">
       <div className="container mx-auto py-12 px-4 md:px-6 lg:px-8">
-        <div className="max-w-3xl mx-auto">
+        <div className="max-w-3xl mx-auto animate animate-fade-down">
           <Image
             src={postImageUrl || "https://via.placeholder.com/550x310"}
             width={1200}

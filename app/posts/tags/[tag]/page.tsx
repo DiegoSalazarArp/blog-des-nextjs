@@ -62,7 +62,7 @@ export default async function Page({ params }: { params: { tag: string } }) {
         </div>
 
         <hr />
-        <div className="pt-5">
+        <div className="pt-5 animate animate-fade-down">
 
           <PostComponent posts={posts} />
 
