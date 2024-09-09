@@ -26,9 +26,12 @@ const AUTHOR_QUERY = `*[_type == "author" && slug.current == $slug][0]{
   slug,
   "imageUrl": image.asset->url
 }`
-const POST_QUERY = `*[_type == "post" && author._ref == $id]{
+const POST_QUERY = `*[_type == "post" && author._ref == $id]  | order(publishedAt desc){
 ...,
-  "authorName": author->name,
+  "author": author->{
+      name,
+      image
+    }
 }`
 
 export default async function Page({ params }: { params: { slug: string } }) {
@@ -46,15 +49,7 @@ export default async function Page({ params }: { params: { slug: string } }) {
     ? urlFor(author.imageUrl)?.width(600).height(600).url()
     : null;
 
-
-
   const posts = await sanityFetch<Post[]>({ query: POST_QUERY, params: { id: author._id } });
-
-
-
-
-  console.log(JSON.stringify(posts, null, 2))
-
 
   return (
     <div>

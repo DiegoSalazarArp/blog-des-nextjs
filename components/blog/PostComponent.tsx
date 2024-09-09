@@ -1,5 +1,6 @@
 import { SanityDocument } from "next-sanity";
 import Link from "next/link";
+import BadgeComponent from "./BadgeComponent";
 
 
 interface PostProps extends SanityDocument {
@@ -10,10 +11,8 @@ interface PostProps extends SanityDocument {
 
 };
 
-
 export default function PostComponent({ posts }: { posts: PostProps[] }) {
 
-  console.log(posts)
   return (
     <>
       <ul className="grid grid-cols-1 gap-12 lg:grid-cols-2">
@@ -31,8 +30,7 @@ export default function PostComponent({ posts }: { posts: PostProps[] }) {
                   </p>
                 </div>
                 <div className="">
-                  <h1>by {post.authorName}</h1>
-
+                  <h1>by {post.author.name}</h1>
                 </div>
               </div>
             </Link>
