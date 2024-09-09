@@ -10,7 +10,7 @@ interface Post extends SanityDocument {
 }
 
 const EVENTS_QUERY = `
-  *[_type == "post"]{
+  *[_type == "post"] | order(publishedAt desc){
     _id,
     title,
     slug,

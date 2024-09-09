@@ -19,8 +19,8 @@ export const myPortableImageComponent = {
         className="p-2"
         src={urlForImage(value).url()}
         alt="post"
-        width={700}
-        height={700}
+        width={600}
+        height={600}
       />
     ),
     code: ({ value }: any) => (
@@ -35,7 +35,7 @@ export const myPortableImageComponent = {
       isInline ? (
         <a href={value.url}>{value.text}</a>
       ) : (
-        <div className="callToAction bg-red-500">{value.text}</div>
+        <div className="callToAction bg-slate-500">{value.text}</div>
       ),
   },
 };

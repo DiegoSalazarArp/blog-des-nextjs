@@ -17,7 +17,7 @@ const TAGS_QUERY = `
 `;
 
 const POSTS_BY_CATEGORY_QUERY = `
-  *[_type == "post" && $category in categories[]->title]{
+  *[_type == "post" && $category in categories[]->title] | order(publishedAt desc){
     _id,
     title,
     slug,
@@ -44,15 +44,10 @@ export default async function Page({ params }: { params: { tag: string } }) {
 
 
 
-  console.log(params)
-
-
-  console.log('post: ', posts)
   return (
     <article className="">
       <BackButton />
       <div className=" mx-auto py-12 ">
-
         <div className="flex items-center justify-center pb-10">
           {
             tags.map((tag) => (
@@ -62,14 +57,10 @@ export default async function Page({ params }: { params: { tag: string } }) {
         </div>
 
         <hr />
+
         <div className="pt-5 animate animate-fade-down">
-
           <PostComponent posts={posts} />
-
-
         </div>
-
-
       </div>
     </article>
 

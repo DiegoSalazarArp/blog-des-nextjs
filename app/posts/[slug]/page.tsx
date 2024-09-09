@@ -8,6 +8,7 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import BadgeComponent from "@/components/blog/BadgeComponent";
 import { PostSanityDocument } from "@/app/types/global";
 import { Suspense } from "react";
+import Link from "next/link";
 
 
 const POST_QUERY = `
@@ -46,14 +47,13 @@ export default async function Page({ params }: { params: { slug: string } }) {
     : null;
 
   const avatarImageUrl = urlFor(post.author.image)
-    ?.width(1200)
+    ?.width(600)
     .height(600)
     .url();
 
   const avatarNamePrefix = post.author.name.split(" ")[0].charAt(0);
 
 
-  // console.log(JSON.stringify(post, null, 2));
 
   return (
     <article className="bg-background">
@@ -68,25 +68,29 @@ export default async function Page({ params }: { params: { slug: string } }) {
           />
           <div className="mt-8 space-y-4">
             <h1 className="text-4xl font-bold tracking-tight">{post.title}</h1>
-            <div className="flex items-center space-x-2  text-muted-foreground">
-              <div className="flex items-center space-x-4">
-                <div>
-                  <Avatar>
-                    <AvatarImage src={avatarImageUrl} alt="" />
-                    <AvatarFallback>{avatarNamePrefix}</AvatarFallback>
-                  </Avatar>
+            <Link href={`/author/des`}>
+              <div className="mt-4 flex items-center space-x-2  text-muted-foreground">
+
+                <div className=" flex items-center space-x-4">
+                  <div>
+                    <Avatar>
+                      <AvatarImage src={avatarImageUrl} alt="" />
+                      <AvatarFallback>{avatarNamePrefix}</AvatarFallback>
+                    </Avatar>
+                  </div>
+
+                  <div>
+                    <p className="font-medium italic">{post.author.name}</p>
+                  </div>
                 </div>
 
-                <div>
-                  <p className="font-medium italic">{post.author.name}</p>
-                </div>
+
+                <p className="text-sm">
+                  Published on {new Date(post.publishedAt!).toLocaleDateString()}
+                </p>
+
               </div>
-
-              <p className="text-sm">
-                Published on {new Date(post.publishedAt!).toLocaleDateString()}
-              </p>
-
-            </div>
+            </Link>
             {post.categories.map((category, i) => {
               return <BadgeComponent key={i} categoryTitle={category.title} />;
             })}
