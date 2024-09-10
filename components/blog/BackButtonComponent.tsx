@@ -11,7 +11,7 @@ export default function BackButton() {
   };
 
   return (
-    <button onClick={handleBack} className="your-button-styles">
+    <button onClick={handleBack} className="hover:-translate-x-2 transition duration-200">
       <div className='flex items-center justify-center'>
         <svg xmlns="http://www.w3.org/2000/svg" className="icon icon-tabler icon-tabler-arrow-left" width="44" height="44" viewBox="0 0 24 24" strokeWidth="1.5" stroke="#2c3e50" fill="none" strokeLinecap="round" strokeLinejoin="round">
           <path stroke="none" d="M0 0h24v24H0z" fill="none" />

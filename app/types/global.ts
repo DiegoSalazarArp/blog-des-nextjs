@@ -27,6 +27,7 @@ interface Image {
 interface Author {
   name: string;
   image: Image;
+  slug: string;
 }
 
 // Interfaz para las categorías

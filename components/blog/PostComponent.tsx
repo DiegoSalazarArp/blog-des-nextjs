@@ -26,7 +26,14 @@ export default function PostComponent({ posts }: { posts: PostProps[] }) {
                 <div className="flex flex-col gap-1">
                   <h2 className="text-xl font-semibold">{post?.title}</h2>
                   <p className="text-gray-500">
-                    {new Date(post.publishedAt!).toLocaleDateString()}
+                    {new Date(post.publishedAt!).toLocaleDateString('en-US', {
+                      month: '2-digit',
+                      day: '2-digit',
+                      year: 'numeric',
+                      hour: '2-digit',
+                      minute: '2-digit',
+
+                    })}
                   </p>
                 </div>
                 <div className="">

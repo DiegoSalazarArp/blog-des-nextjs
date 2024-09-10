@@ -9,6 +9,7 @@ import BadgeComponent from "@/components/blog/BadgeComponent";
 import { PostSanityDocument } from "@/app/types/global";
 import { Suspense } from "react";
 import Link from "next/link";
+import BackButton from "@/components/blog/BackButtonComponent";
 
 
 const POST_QUERY = `
@@ -21,7 +22,8 @@ const POST_QUERY = `
     body,
     "author": author->{
       name,
-      image
+      image,
+      "slug": slug.current
     },
     categories[]->{
       title
@@ -54,58 +56,66 @@ export default async function Page({ params }: { params: { slug: string } }) {
   const avatarNamePrefix = post.author.name.split(" ")[0].charAt(0);
 
 
-
   return (
-    <article className="bg-background">
-      <div className="container mx-auto py-12 px-4 md:px-6 lg:px-8">
-        <div className="max-w-3xl mx-auto animate animate-fade-down">
-          <Image
-            src={postImageUrl || "https://via.placeholder.com/550x310"}
-            width={1200}
-            height={600}
-            alt="Blog Post Hero"
-            className="rounded-lg object-cover aspect-[2/1]"
-          />
-          <div className="mt-8 space-y-4">
-            <h1 className="text-4xl font-bold tracking-tight">{post.title}</h1>
-            <Link href={`/author/des`}>
-              <div className="mt-4 flex items-center space-x-2  text-muted-foreground">
+    <div>
+      <BackButton />
+      <article className="border shadow rounded-xl bg-background">
 
-                <div className=" flex items-center space-x-4">
-                  <div>
-                    <Avatar>
-                      <AvatarImage src={avatarImageUrl} alt="" />
-                      <AvatarFallback>{avatarNamePrefix}</AvatarFallback>
-                    </Avatar>
-                  </div>
+        <div className="mx-auto py-12 px-4 md:px-6 lg:px-8">
+          <div className="max-w-3xl mx-auto animate animate-fade-down">
+            <Image
+              src={postImageUrl || "https://via.placeholder.com/550x310"}
+              width={1200}
+              height={600}
+              alt="Blog Post Hero"
+              className="rounded-lg object-cover aspect-[2/1]"
+            />
+            <div className="mt-8 space-y-4">
+              <h1 className="text-4xl font-bold tracking-tight">{post.title}</h1>
+              <Link href={`/author/${post.author.slug}`}>
+                <div className="mt-4 flex items-center space-x-2  text-muted-foreground">
 
-                  <div>
-                    <p className="font-medium italic">{post.author.name}</p>
+                  <div className=" flex items-center space-x-4">
+                    <div>
+                      <Avatar>
+                        <AvatarImage src={avatarImageUrl} alt="" />
+                        <AvatarFallback>{avatarNamePrefix}</AvatarFallback>
+                      </Avatar>
+                    </div>
+
+                    <div>
+                      <p className="font-medium italic">{post.author.name}</p>
+                    </div>
                   </div>
+                  <p className="text-sm">
+                    Published on {new Date(post.publishedAt!).toLocaleDateString('en-US', {
+                      month: '2-digit',
+                      day: '2-digit',
+                      year: 'numeric',
+                      hour: '2-digit',
+                      minute: '2-digit',
+
+                    })}
+                  </p>
+
                 </div>
-
-
-                <p className="text-sm">
-                  Published on {new Date(post.publishedAt!).toLocaleDateString()}
-                </p>
+              </Link>
+              {post.categories.map((category, i) => {
+                return <BadgeComponent key={i} categoryTitle={category.title} />;
+              })}
+              <div>
 
               </div>
-            </Link>
-            {post.categories.map((category, i) => {
-              return <BadgeComponent key={i} categoryTitle={category.title} />;
-            })}
-            <div>
-
+            </div>
+            <div className="text-justify prose prose-lg mt-8">
+              <PortableText
+                value={post.body}
+                components={myPortableImageComponent}
+              />
             </div>
           </div>
-          <div className="prose prose-rose  mt-8 dark:prose-invert  tracking-normal">
-            <PortableText
-              value={post.body}
-              components={myPortableImageComponent}
-            />
-          </div>
         </div>
-      </div>
-    </article>
+      </article>
+    </div>
   );
 }
