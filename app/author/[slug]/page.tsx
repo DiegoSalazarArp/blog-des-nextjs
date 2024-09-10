@@ -27,7 +27,11 @@ const AUTHOR_QUERY = `*[_type == "author" && slug.current == $slug][0]{
   "imageUrl": image.asset->url
 }`
 const POST_QUERY = `*[_type == "post" && author._ref == $id]  | order(publishedAt desc){
-...,
+  _id,
+  title,
+  slug,
+  mainImage,
+  publishedAt,
   "author": author->{
       name,
       image
@@ -51,6 +55,8 @@ export default async function Page({ params }: { params: { slug: string } }) {
 
   const posts = await sanityFetch<Post[]>({ query: POST_QUERY, params: { id: author._id } });
 
+
+  console.log(posts)
   return (
     <div>
       <Card className="w-full max-w-3xl mx-auto">
