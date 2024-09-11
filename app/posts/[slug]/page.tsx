@@ -76,27 +76,29 @@ export default async function Page({ params }: { params: { slug: string } }) {
                 <div className="mt-4 flex items-center space-x-2  text-muted-foreground">
 
                   <div className=" flex items-center space-x-4">
-                    <div>
+                    <div className="">
                       <Avatar>
                         <AvatarImage src={avatarImageUrl} alt="" />
                         <AvatarFallback>{avatarNamePrefix}</AvatarFallback>
                       </Avatar>
                     </div>
 
-                    <div>
-                      <p className="font-medium italic">{post.author.name}</p>
-                    </div>
-                  </div>
-                  <p className="text-sm">
-                    Published on {new Date(post.publishedAt!).toLocaleDateString('en-US', {
-                      month: '2-digit',
-                      day: '2-digit',
-                      year: 'numeric',
-                      hour: '2-digit',
-                      minute: '2-digit',
 
-                    })}
-                  </p>
+                  </div>
+                  <div className="flex flex-col pl-6 ">
+                    <p className="font-medium italic">{post.author.name}</p>
+                    <p className="text-sm">
+                      Published on {new Date(post.publishedAt!).toLocaleDateString('en-US', {
+                        month: '2-digit',
+                        day: '2-digit',
+                        year: 'numeric',
+                        hour: '2-digit',
+                        minute: '2-digit',
+
+                      })}
+                    </p>
+                  </div>
+
 
                 </div>
               </Link>

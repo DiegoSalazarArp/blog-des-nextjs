@@ -32,7 +32,7 @@ export default async function IndexPage() {
       <div className="flex flex-col items-center gap-6 justify-center mt-20">
 
         <BannerTitle className="md:text-[100px] text-[45px]" title="we_die_young" />
-        <p className="text-slate-300 italic">enjoy the club</p>
+        <p className="text-slate-500 animate-pulse  italic">welcome to the club</p>
       </div>
       <hr />
 
