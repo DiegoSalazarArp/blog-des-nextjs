@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import { GeistSans } from 'geist/font/sans';
-import { GeistMono } from 'geist/font/mono';
 
 
 const inter = Inter({ subsets: ["latin"] });
@@ -19,8 +18,8 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={GeistMono.className}>
-        <main className="flex bg-slate-200 text-black min-h-screen flex-col pt-4 md:px-20 md:py-10 gap-10">
+      <body className={GeistSans.className}>
+        <main className="flex bg-slate-200 text-black min-h-screen flex-col p-4  md:py-10 md:px-20 gap-10">
           {children}
         </main>
       </body>

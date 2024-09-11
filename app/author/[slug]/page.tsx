@@ -67,17 +67,16 @@ export default async function Page({ params }: { params: { slug: string } }) {
           <CardContent className="p-6">
             <div className="flex flex-col sm:flex-row gap-6">
               <div className="sm:w-1/3 flex items-start justify-center">
-                <Avatar className="w-40 h-40 sm:w-full sm:h-auto aspect-square">
+                <Avatar className="w-40 h-40 sm:w-full sm:h-auto aspect-square border-4 border-slate-200">
                   <AvatarImage src={authorImageUrl || ` /placeholder.svg?height=300&width=300`} alt="Jane Doe" />
                   <AvatarFallback>JD</AvatarFallback>
                 </Avatar>
               </div>
               <div className="sm:w-2/3 space-y-4">
-                <div>
+                <div className="text-center md:text-left">
                   <h2 className="text-3xl font-bold">{author.name}</h2>
-                  <p className="text-xl text-muted-foreground"></p>
                 </div>
-                <div className="prose prose-rose  mt-8 dark:prose-invert  tracking-normal">
+                <div className="prose prose-rose mt-8 dark:prose-invert  tracking-normal">
                   <PortableText
                     value={author.bio}
                     components={myPortableImageComponent}
