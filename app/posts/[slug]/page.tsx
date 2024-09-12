@@ -59,16 +59,16 @@ export default async function Page({ params }: { params: { slug: string } }) {
   return (
     <div>
       <BackButton />
-      <article className="border shadow rounded-xl bg-background">
+      <article className="border shadow bg-background">
 
         <div className="mx-auto py-12 px-4 md:px-6 lg:px-8">
-          <div className="max-w-3xl mx-auto animate animate-fade-down">
+          <div className="max-w-3xl mx-auto ">
             <Image
               src={postImageUrl || "https://via.placeholder.com/550x310"}
               width={1200}
               height={600}
               alt="Blog Post Hero"
-              className="rounded-lg object-cover aspect-[2/1]"
+              className="object-cover aspect-[2/1]"
             />
             <div className="mt-8 space-y-4">
               <h1 className="text-4xl font-bold tracking-tight">{post.title}</h1>
