@@ -61,27 +61,27 @@ export default async function Page({ params }: { params: { slug: string } }) {
       <BackButton />
       <article className="border shadow bg-background">
 
-        <div className="mx-auto py-12 px-4 md:px-6 lg:px-8">
+        <div className="sm:py-8 md:px-6 lg:px-8">
           <div className="max-w-3xl mx-auto ">
             <Image
               src={postImageUrl || "https://via.placeholder.com/550x310"}
               width={1200}
               height={600}
               alt="Blog Post Hero"
-              className="object-cover aspect-[2/1]"
+              className="object-fill aspect-[2/1]"
             />
-            <div className="mt-8 space-y-4">
+            <div className="mt-8 px-4 space-y-4">
               <h1 className="text-4xl font-bold tracking-tight">{post.title}</h1>
               <Link href={`/author/${post.author.slug}`}>
-                <div className="mt-4 flex items-center space-x-2  text-muted-foreground">
+                <div className="mt-4 flex items-center space-x-2  text-muted-foreground hover:underline">
 
-                  <div className=" flex items-center space-x-4">
-                    <div className="">
-                      <Avatar>
-                        <AvatarImage src={avatarImageUrl} alt="" />
-                        <AvatarFallback>{avatarNamePrefix}</AvatarFallback>
-                      </Avatar>
-                    </div>
+                  <div className=" flex items-center ">
+
+                    <Avatar className="h-14 w-14">
+                      <AvatarImage src={avatarImageUrl} alt="" />
+                      <AvatarFallback>{avatarNamePrefix}</AvatarFallback>
+                    </Avatar>
+
 
 
                   </div>
@@ -109,7 +109,7 @@ export default async function Page({ params }: { params: { slug: string } }) {
 
               </div>
             </div>
-            <div className="text-justify prose prose-lg mt-8">
+            <div className="mx-auto px-4 text-justify tracking-normal prose prose-lg mt-8">
               <PortableText
                 value={post.body}
                 components={myPortableImageComponent}

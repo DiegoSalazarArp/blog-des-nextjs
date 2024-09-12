@@ -1,6 +1,7 @@
 import PostComponent from "@/components/blog/PostComponent";
 import BannerTitle from "@/components/site/BannerTitle";
 import { sanityFetch } from "@/sanity/client";
+import { Separator } from "@radix-ui/react-separator";
 import { SanityDocument } from "next-sanity";
 
 interface Post extends SanityDocument {
@@ -38,6 +39,7 @@ export default async function IndexPage() {
 
       <div className="flex flex-col justify-center ">
         <h1 className="text-4xl font-bold tracking-tighter my-6">Latest Post</h1>
+        <Separator />
         <PostComponent posts={posts} />
 
       </div>

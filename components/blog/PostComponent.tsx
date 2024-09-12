@@ -17,7 +17,7 @@ export default function PostComponent({ posts }: { posts: PostProps[] }) {
     <>
       <ul className="grid grid-cols-1 gap-12 lg:grid-cols-2">
         {posts.map((post) => (
-          <li className="bg-white p-4 rounded-lg shadow-lg hover:translate-x-2  hover:duration-100" key={post._id}>
+          <li className="bg-white p-4 rounded-lg shadow-lg" key={post._id}>
             <Link
               className="hover:underline"
               href={`/posts/${post.slug.current}`}
@@ -30,8 +30,6 @@ export default function PostComponent({ posts }: { posts: PostProps[] }) {
                       month: '2-digit',
                       day: '2-digit',
                       year: 'numeric',
-                      hour: '2-digit',
-                      minute: '2-digit',
 
                     })}
                   </p>
