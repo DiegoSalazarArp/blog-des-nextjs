@@ -2,10 +2,8 @@ import type { Metadata } from "next";
 import { Inter, Comfortaa } from "next/font/google";
 import "./globals.css";
 import { GeistSans } from 'geist/font/sans';
-import { unstable_noStore } from "next/cache";
 
 
-unstable_noStore()
 const inter = Comfortaa({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
