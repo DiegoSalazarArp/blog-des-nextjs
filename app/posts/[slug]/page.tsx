@@ -46,7 +46,8 @@ export default async function Page({ params }: { params: { slug: string } }) {
 
   const postImageUrl = post.mainImage
     ? urlFor(post.mainImage)?.width(1200).height(600).url()
-    : null;
+    : "https://via.placeholder.com/550x310";  // URL de imagen por defecto si mainImage no existe
+  ;
 
   const avatarImageUrl = urlFor(post.author.image)
     ?.width(600)
