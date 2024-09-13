@@ -59,9 +59,6 @@ export default async function Page({ params }: { params: { slug: string } }) {
 
   return (
     <div>
-
-      <BackButton />
-
       <div>
         <Card className="w-full max-w-3xl mx-auto">
           <CardContent className="p-6">

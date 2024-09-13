@@ -46,7 +46,6 @@ export default async function Page({ params }: { params: { tag: string } }) {
 
   return (
     <article className="">
-      <BackButton />
       <div className=" mx-auto py-12 ">
         <div className="flex items-center justify-center pb-10">
           {

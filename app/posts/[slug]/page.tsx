@@ -59,7 +59,6 @@ export default async function Page({ params }: { params: { slug: string } }) {
 
   return (
     <div>
-      <BackButton />
       <article className="border shadow bg-background">
 
         <div className="sm:py-8 md:px-6 lg:px-8">
