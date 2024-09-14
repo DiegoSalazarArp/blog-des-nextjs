@@ -23,6 +23,7 @@ const EVENTS_QUERY = `
       image
     },
     categories[]->{
+      _id,
       title
     }
   }
