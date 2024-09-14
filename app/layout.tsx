@@ -4,11 +4,6 @@ import "./globals.css";
 
 const confortaa = Comfortaa({ subsets: ["latin"] });
 
-export const metadata: Metadata = {
-  title: "wdy",
-  description: "club",
-};
-
 export default function RootLayout({
   children,
 }: Readonly<{
