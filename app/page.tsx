@@ -21,6 +21,9 @@ const EVENTS_QUERY = `
     "author": author->{
       name,
       image
+    },
+    categories[]->{
+      title
     }
   }
 `;

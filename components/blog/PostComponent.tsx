@@ -1,6 +1,7 @@
 import { SanityDocument } from "next-sanity";
 import Link from "next/link";
 import BadgeComponent from "./BadgeComponent";
+import TagsComponent from "./TagsComponent";
 
 
 interface PostProps extends SanityDocument {
@@ -12,11 +13,11 @@ interface PostProps extends SanityDocument {
 };
 
 export default function PostComponent({ posts }: { posts: PostProps[] }) {
+  console.log(posts)
 
-  console.log("postssss: ", posts)
   return (
     <>
-      <ul className="grid grid-cols-1 gap-12 lg:grid-cols-2">
+      <ul className="grid grid-cols-1 gap-12">
         {posts.map((post) => (
           <li className="bg-white p-4 rounded-lg shadow-lg" key={post._id}>
             <Link
@@ -35,8 +36,15 @@ export default function PostComponent({ posts }: { posts: PostProps[] }) {
                     })}
                   </p>
                 </div>
-                <div className="">
+                <div className="flex flex-col gap-1 text-end">
                   <h1>by {post.author.name}</h1>
+
+                  <div className="flex justify-end">
+                    {post.categories.map((category: any) => {
+                      return <TagsComponent categoryTitle={category.title} key={category._id} />
+                    })}
+                  </div>
+
                 </div>
               </div>
             </Link>
