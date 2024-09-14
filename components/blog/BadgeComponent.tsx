@@ -28,8 +28,8 @@ export default function BadgeComponent({ categoryTitle }: BadgeProps) {
         : categoryTitle === "tech"
           ? BadgeVariant.DESTRUCTIVE
           : BadgeVariant.OUTLINE;
-  return (
 
+  return (
     <Link href={`/posts/tags/${categoryTitle}`} className={badgeVariants({ variant })}>
       {categoryTitle}
     </Link>

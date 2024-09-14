@@ -1,10 +1,8 @@
 import type { Metadata } from "next";
-import { Inter, Comfortaa } from "next/font/google";
+import { Comfortaa } from "next/font/google";
 import "./globals.css";
-import { GeistSans } from 'geist/font/sans';
 
-
-const inter = Comfortaa({ subsets: ["latin"] });
+const confortaa = Comfortaa({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "wdy",
@@ -18,8 +16,8 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={inter.className}>
-        <main className="flex bg-slate-200 text-black min-h-screen flex-col p-4 md:py-10 md:px-40 lg:px-[30rem] ">
+      <body className={confortaa.className}>
+        <main className="flex flex-col min-h-screen bg-slate-200 text-black p-4 md:px-10 lg:px-[34rem]">
           {children}
         </main>
       </body>

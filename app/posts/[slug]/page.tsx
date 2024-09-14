@@ -1,16 +1,13 @@
 import Image from "next/image";
-import { client, sanityFetch } from "@/sanity/client";
+import Link from "next/link";
 import { PortableText } from "next-sanity";
-import { SanityImageSource } from "@sanity/image-url/lib/types/types";
-import { myPortableImageComponent } from "@/sanity/utils/function";
 import imageUrlBuilder from "@sanity/image-url";
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { SanityImageSource } from "@sanity/image-url/lib/types/types";
+import { client, sanityFetch } from "@/sanity/client";
+import { myPortableImageComponent } from "@/sanity/utils/function";
 import BadgeComponent from "@/components/blog/BadgeComponent";
 import { PostSanityDocument } from "@/app/types/global";
-import { Suspense } from "react";
-import Link from "next/link";
-import BackButton from "@/components/blog/BackButtonComponent";
-
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 
 const POST_QUERY = `
   *[_type == "post" && slug.current == $slug][0]{
@@ -46,7 +43,7 @@ export default async function Page({ params }: { params: { slug: string } }) {
 
   const postImageUrl = post.mainImage
     ? urlFor(post.mainImage)?.width(1200).height(600).url()
-    : "https://via.placeholder.com/550x310";  // URL de imagen por defecto si mainImage no existe
+    : "https://via.placeholder.com/550x310";
   ;
 
   const avatarImageUrl = urlFor(post.author.image)
@@ -55,7 +52,6 @@ export default async function Page({ params }: { params: { slug: string } }) {
     .url();
 
   const avatarNamePrefix = post.author.name.split(" ")[0].charAt(0);
-
 
   return (
     <div>
@@ -74,16 +70,11 @@ export default async function Page({ params }: { params: { slug: string } }) {
               <h1 className="text-4xl font-bold tracking-tight">{post.title}</h1>
               <Link href={`/author/${post.author.slug}`}>
                 <div className="mt-4 flex items-center space-x-2  text-muted-foreground hover:underline">
-
                   <div className=" flex items-center ">
-
                     <Avatar className="h-14 w-14">
                       <AvatarImage src={avatarImageUrl} alt="" />
                       <AvatarFallback>{avatarNamePrefix}</AvatarFallback>
                     </Avatar>
-
-
-
                   </div>
                   <div className="flex flex-col pl-6 ">
                     <p className="font-medium italic">{post.author.name}</p>
@@ -98,15 +89,12 @@ export default async function Page({ params }: { params: { slug: string } }) {
                       })}
                     </p>
                   </div>
-
-
                 </div>
               </Link>
               {post.categories.map((category, i) => {
                 return <BadgeComponent key={i} categoryTitle={category.title} />;
               })}
               <div>
-
               </div>
             </div>
             <div className="mx-auto px-4 text-justify tracking-normal prose prose-lg mt-8">

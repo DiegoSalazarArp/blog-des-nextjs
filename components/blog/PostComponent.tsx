@@ -1,19 +1,15 @@
 import { SanityDocument } from "next-sanity";
 import Link from "next/link";
-import BadgeComponent from "./BadgeComponent";
 import TagsComponent from "./TagsComponent";
-
 
 interface PostProps extends SanityDocument {
   title: string;
   slug: {
     current: string;
   };
-
 };
 
 export default function PostComponent({ posts }: { posts: PostProps[] }) {
-  console.log(posts)
 
   return (
     <>
@@ -44,13 +40,12 @@ export default function PostComponent({ posts }: { posts: PostProps[] }) {
                       return <TagsComponent categoryTitle={category.title} key={category._id} />
                     })}
                   </div>
-
                 </div>
               </div>
             </Link>
           </li>
         ))}
-
-      </ul></>
+      </ul>
+    </>
   )
 }

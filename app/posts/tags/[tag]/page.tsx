@@ -1,9 +1,7 @@
-import BackButton from "@/components/blog/BackButtonComponent";
 import BadgeComponent from "@/components/blog/BadgeComponent";
 import PostComponent from "@/components/blog/PostComponent";
-import { client, sanityFetch } from "@/sanity/client";
+import { sanityFetch } from "@/sanity/client";
 import { SanityDocument } from "next-sanity";
-import Link from "next/link";
 
 interface Post extends SanityDocument {
   title: string;
@@ -30,7 +28,6 @@ const POSTS_BY_CATEGORY_QUERY = `
   }
 `;
 
-
 export default async function Page({ params }: { params: { tag: string } }) {
 
   const tags = await sanityFetch<SanityDocument[]>({
@@ -42,8 +39,6 @@ export default async function Page({ params }: { params: { tag: string } }) {
     params: { category: params.tag },
   })
 
-
-
   return (
     <article className="">
       <div className=" mx-auto py-12 ">
@@ -54,10 +49,8 @@ export default async function Page({ params }: { params: { tag: string } }) {
             ))
           }
         </div>
-
         <hr />
-
-        <div className="pt-5 animate animate-fade-down">
+        <div className="pt-5">
           <PostComponent posts={posts} />
         </div>
       </div>

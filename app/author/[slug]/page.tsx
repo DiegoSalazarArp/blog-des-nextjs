@@ -1,13 +1,12 @@
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import { Button } from "@/components/ui/button";
-import { Card, CardContent } from "@/components/ui/card";
-import { client, sanityFetch } from "@/sanity/client";
-import imageUrlBuilder from "@sanity/image-url";
 import { PortableText, SanityDocument } from "next-sanity";
+import { client, sanityFetch } from "@/sanity/client";
 import { SanityImageSource } from "@sanity/image-url/lib/types/types";
-import PostComponent from "@/components/blog/PostComponent";
+import imageUrlBuilder from "@sanity/image-url";
 import { myPortableImageComponent } from "@/sanity/utils/function";
-import BackButton from "@/components/blog/BackButtonComponent";
+import PostComponent from "@/components/blog/PostComponent";
+import { Card, CardContent } from "@/components/ui/card";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+
 
 interface Author extends SanityDocument {
   slug: string;
@@ -55,7 +54,6 @@ export default async function Page({ params }: { params: { slug: string } }) {
     : null;
 
   const posts = await sanityFetch<Post[]>({ query: POST_QUERY, params: { id: author._id } });
-
 
   return (
     <div>
