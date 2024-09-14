@@ -58,11 +58,11 @@ export default async function Page({ params }: { params: { slug: string } }) {
     <>
       <Head>
         <title>{post.title}</title>
-        {/* <meta name="description" content={post.description || 'Descripción por defecto'}> */}
+        <meta name="description" content={post.description || 'Descripción por defecto'} />
         <meta property="og:title" content={post.title} />
         <meta property="og:description" content={post.description || 'Descripción por defecto'} />
         <meta property="og:image" content={postImageUrl} />
-        <meta property="og:url" content={`https://tusitio.com/blog/${post.slug.current}`} />
+        <meta property="og:url" content={`https://weedieyoung.vercel.app/posts/${post.slug.current}`} />
         <meta property="twitter:card" content="summary_large_image" />
         <meta property="twitter:title" content={post.title} />
         <meta property="twitter:description" content={post.description || 'Descripción por defecto'} />
