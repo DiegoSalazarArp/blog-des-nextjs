@@ -17,7 +17,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={confortaa.className}>
-        <main className="flex flex-col min-h-screen bg-slate-200 text-black p-4 md:px-10 lg:px-[34rem]">
+        <main className="flex flex-col min-h-screen bg-slate-200 text-black p-4 md:px-10 xl:px-[22rem]">
           {children}
         </main>
       </body>
