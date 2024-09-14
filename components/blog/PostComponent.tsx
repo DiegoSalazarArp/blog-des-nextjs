@@ -13,6 +13,7 @@ interface PostProps extends SanityDocument {
 
 export default function PostComponent({ posts }: { posts: PostProps[] }) {
 
+  console.log("postssss: ", posts)
   return (
     <>
       <ul className="grid grid-cols-1 gap-12 lg:grid-cols-2">
@@ -20,7 +21,7 @@ export default function PostComponent({ posts }: { posts: PostProps[] }) {
           <li className="bg-white p-4 rounded-lg shadow-lg" key={post._id}>
             <Link
               className="hover:underline"
-              href={`/posts/${post.slug.current}`}
+              href={`/posts/${encodeURIComponent(post.slug.current)}`}
             >
               <div className="flex items-center justify-between">
                 <div className="flex flex-col gap-1">
