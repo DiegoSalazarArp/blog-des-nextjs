@@ -7,6 +7,8 @@ interface PostProps extends SanityDocument {
   slug: {
     current: string;
   };
+  categories?: { title: string; _id: string }[]; // Asegúrate de que categories es opcional
+
 };
 
 export default function PostComponent({ posts }: { posts: PostProps[] }) {
@@ -36,9 +38,9 @@ export default function PostComponent({ posts }: { posts: PostProps[] }) {
                   <h1>by {post.author.name}</h1>
 
                   <div className="flex justify-end">
-                    {post.categories.map((category: any) => {
-                      return <TagsComponent categoryTitle={category.title} key={category._id} />
-                    })}
+                    {post.categories && post.categories.map((category) => (
+                      <TagsComponent categoryTitle={category.title} key={category._id} />
+                    ))}
                   </div>
                 </div>
               </div>
