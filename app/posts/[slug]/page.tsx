@@ -91,7 +91,7 @@ export default async function Page({ params }: { params: { slug: string } }) {
                   </div>
                 </div>
               </Link>
-              // validar primero si existen y luego hacer el map para evitar errores de renderizado
+              {/* validar primero si existen y luego hacer el map para evitar errores de renderizado */}
               {post.categories && post.categories.map((category, i) => {
                 return <BadgeComponent key={i} categoryTitle={category.title} />;
               })}
