@@ -15,13 +15,16 @@ export const urlForImage = (source: typeof Image) => {
 export const myPortableImageComponent = {
   types: {
     image: ({ value }: any) => (
-      <Image
-        className="p-2"
-        src={urlForImage(value).url()}
-        alt="post"
-        width={600}
-        height={600}
-      />
+      <div className="flex items-center justify-center">
+
+        <Image
+          className="p-2 rounded-md"
+          src={urlForImage(value).url()}
+          alt="post"
+          width={600}
+          height={600}
+        />
+      </div>
     ),
     code: ({ value }: any) => (
       <SyntaxHighlighter

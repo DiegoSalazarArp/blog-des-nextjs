@@ -56,18 +56,19 @@ export default async function Page({ params }: { params: { slug: string } }) {
 
   return (
     <>
-      <Head>
+      {/* TODO: VERIFICAR */}
+      {/* <Head>
         <title>{post.title}</title>
         <meta name="description" content={post.description || 'Descripción por defecto'} />
         <meta property="og:title" content={post.title} />
         <meta property="og:description" content={post.description || 'Descripción por defecto'} />
         <meta property="og:image" content={postImageUrl} />
-        <meta property="og:url" content={`https://weedieyoung.vercel.app/posts/${post.slug.current}`} />
+        <meta property="og:url" content={`https://wedieyoung.vercel.app/posts/${post.slug.current}`} />
         <meta property="twitter:card" content="summary_large_image" />
         <meta property="twitter:title" content={post.title} />
         <meta property="twitter:description" content={post.description || 'Descripción por defecto'} />
         <meta property="twitter:image" content={postImageUrl} />
-      </Head>
+      </Head> */}
       <div>
         <article className="border shadow bg-background">
 
