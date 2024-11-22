@@ -1,14 +1,13 @@
-import Image from "next/image";
-import Link from "next/link";
-import { PortableText } from "next-sanity";
-import imageUrlBuilder from "@sanity/image-url";
-import { SanityImageSource } from "@sanity/image-url/lib/types/types";
+import { PostSanityDocument } from "@/app/types/global";
+import BadgeComponent from "@/components/blog/BadgeComponent";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { client, sanityFetch } from "@/sanity/client";
 import { myPortableImageComponent } from "@/sanity/utils/function";
-import BadgeComponent from "@/components/blog/BadgeComponent";
-import { PostSanityDocument } from "@/app/types/global";
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import Head from "next/head";
+import imageUrlBuilder from "@sanity/image-url";
+import { SanityImageSource } from "@sanity/image-url/lib/types/types";
+import { PortableText } from "next-sanity";
+import Image from "next/image";
+import Link from "next/link";
 
 const POST_QUERY = `
   *[_type == "post" && slug.current == $slug][0]{
@@ -113,7 +112,7 @@ export default async function Page({ params }: { params: { slug: string } }) {
                 <div>
                 </div>
               </div>
-              <div className="mx-auto px-4 text-justify tracking-normal prose prose-lg mt-8">
+              <div className="mx-auto px-4 tracking-normal prose prose-lg mt-8">
                 <PortableText
                   value={post.body}
                   components={myPortableImageComponent}
