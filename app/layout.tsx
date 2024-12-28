@@ -19,8 +19,10 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          <Navbar />
-          <main className="flex flex-col min-h-screen  p-4 md:px-10 xl:px-[22rem]">
+          <div className="transition-transform duration-300">
+            <Navbar />
+          </div>
+          <main className="flex flex-col min-h-screen  md:px-10 xl:px-[22rem] ">
             {children}
           </main>
         </ThemeProvider>

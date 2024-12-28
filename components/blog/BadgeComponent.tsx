@@ -30,7 +30,7 @@ export default function BadgeComponent({ categoryTitle }: BadgeProps) {
           : BadgeVariant.OUTLINE;
 
   return (
-    <Link href={`/posts/tags/${categoryTitle}`} className={badgeVariants({ variant })}>
+    <Link href={`/posts/tags/${categoryTitle}`} className={`${badgeVariants({ variant })} gap-2`}>
       {categoryTitle}
     </Link>
 

@@ -1,6 +1,7 @@
 "use client"
 
 import { Button } from "@/components/ui/button"
+import { useScrollPosition } from "@/hooks/useScrollPosition"
 import { Moon, Sun } from "lucide-react"
 import { useTheme } from "next-themes"
 import Link from "next/link"
@@ -8,9 +9,11 @@ import BannerTitle from "./site/BannerTitle"
 
 export function Navbar() {
     const { theme, setTheme } = useTheme()
+    const isVisible = useScrollPosition()
 
     return (
-        <nav className="border-b fixed  w-full bg-background z-50">
+        <nav className={`fixed top-0 w-full z-50 transition-transform duration-300 bg-background border-b ${isVisible ? 'translate-y-0' : '-translate-y-full'
+            }`}>
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="flex items-center justify-between h-16">
                     <div className="flex-1 flex items-center justify-between">
