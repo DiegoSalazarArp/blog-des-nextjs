@@ -1,5 +1,5 @@
-import Image from "next/image";
 import createImageUrlBuilder from "@sanity/image-url";
+import Image from "next/image";
 
 import SyntaxHighlighter from "react-syntax-highlighter";
 
@@ -38,7 +38,7 @@ export const myPortableImageComponent = {
       isInline ? (
         <a href={value.url}>{value.text}</a>
       ) : (
-        <div className="callToAction bg-slate-500">{value.text}</div>
+        <div className="callToAction ">{value.text}</div>
       ),
   },
 };

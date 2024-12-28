@@ -112,7 +112,25 @@ export default async function Page({ params }: { params: { slug: string } }) {
                 <div>
                 </div>
               </div>
-              <div className="mx-auto px-4 tracking-normal prose prose-lg mt-8">
+              <div className="mx-auto px-4  tracking-normal 
+                dark:prose-blockquote:bg-lime-400
+                dark:prose-strong:text-neutral-500
+                dark:prose-pre:bg-neutral-900
+                dark:prose-a:text-blue-500 
+                dark:prose-code:text-neutral-500
+                dark:prose-p:text-neutral-300
+                dark:prose-h2:text-neutral-300
+                dark:prose-h6:text-neutral-300
+                dark:prose-li:text-neutral-300
+                prose-blockquote:bg-pink-300
+                prose-strong:text-neutral-700
+                prose-pre:bg-neutral-100
+                prose-a:text-blue-700
+                prose-code:text-neutral-700
+                prose-p:text-neutral-800
+                prose-h2:text-neutral-800
+                prose 
+                prose-lg mt-8">
                 <PortableText
                   value={post.body}
                   components={myPortableImageComponent}

@@ -1,4 +1,5 @@
-import type { Metadata } from "next";
+import { Navbar } from "@/components/Navbar";
+import { ThemeProvider } from "@/components/providers/theme-provider";
 import { Comfortaa } from "next/font/google";
 import "./globals.css";
 
@@ -10,11 +11,19 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <body className={confortaa.className}>
-        <main className="flex flex-col min-h-screen bg-slate-200 text-black p-4 md:px-10 xl:px-[22rem]">
-          {children}
-        </main>
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="system"
+          enableSystem
+          disableTransitionOnChange
+        >
+          <Navbar />
+          <main className="flex flex-col min-h-screen  p-4 md:px-10 xl:px-[22rem]">
+            {children}
+          </main>
+        </ThemeProvider>
       </body>
     </html>
   );

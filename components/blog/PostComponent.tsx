@@ -17,7 +17,7 @@ export default function PostComponent({ posts }: { posts: PostProps[] }) {
     <>
       <ul className="grid grid-cols-1 gap-12">
         {posts.map((post) => (
-          <li className="bg-white p-4 rounded-lg shadow-lg" key={post._id}>
+          <li className="bg-neutral-300 dark:bg-neutral-900  p-4 rounded-lg shadow-lg" key={post._id}>
             <Link
               className="hover:underline"
               href={`/posts/${encodeURIComponent(post.slug.current)}`}
