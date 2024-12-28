@@ -69,7 +69,7 @@ export default async function Page({ params }: { params: { slug: string } }) {
         <meta property="twitter:image" content={postImageUrl} />
       </Head> */}
       <div>
-        <article className="border shadow bg-background">
+        <article className="border-r border-l shadow bg-background">
 
           <div className="sm:py-8 md:px-6 lg:px-8">
             <div className="max-w-3xl mx-auto ">
