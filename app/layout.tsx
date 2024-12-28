@@ -22,7 +22,7 @@ export default function RootLayout({
           <div className="transition-transform duration-300">
             <Navbar />
           </div>
-          <main className="flex flex-col min-h-screen  md:px-10 xl:px-[22rem] ">
+          <main className="flex flex-col min-h-screen px-4  md:px-10 xl:px-[22rem] ">
             {children}
           </main>
         </ThemeProvider>
