@@ -3,6 +3,7 @@
 import { Button } from "@/components/ui/button"
 import { Moon, Sun } from "lucide-react"
 import { useTheme } from "next-themes"
+import Link from "next/link"
 import BannerTitle from "./site/BannerTitle"
 
 export function Navbar() {
@@ -14,7 +15,9 @@ export function Navbar() {
                 <div className="flex items-center justify-between h-16">
                     <div className="flex-1 flex items-center justify-between">
                         <div className="flex-shrink-0">
-                            <BannerTitle className="md:text-[30px] " title="we_die_young" />
+                            <Link href="/">
+                                <BannerTitle className="md:text-[30px] " title="we_die_young" />
+                            </Link>
                         </div>
                         <Button
                             variant="ghost"
